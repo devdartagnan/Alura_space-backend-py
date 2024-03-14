@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from django.contrib.auth.models import User
 
 class Cards(models.Model):
     LISTA_DE_CATEGORIAS = [
@@ -15,7 +16,14 @@ class Cards(models.Model):
     descricao = models.TextField(null= False, blank=False)
     foto = models.ImageField(upload_to='fotos/%Y/%m/%d/', blank=True)
     publicado = models.BooleanField(default=False)
-    data_card = models.DateTimeField(default=datetime.now)  #cria
+    data_card = models.DateTimeField(default=datetime.now) 
+    usuario = models.ForeignKey(
+        to=User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=False,
+        related_name='user'
+    )
     
     
     def __str__(self):

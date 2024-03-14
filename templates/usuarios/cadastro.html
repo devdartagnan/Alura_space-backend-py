@@ -3,14 +3,20 @@
 {% block content%}
 
 <section class="galeria" style="margin-left: 5em">
-    <form action="" method="">
+    <form action="{% url 'cadastro' %}" method="POST">
         {% csrf_token %}
         <div class="row">
             {% for field in form.visible_fields %}
             <div class="col-12 col-lg-12" style="margin-bottom: 10px">
-                <label for="{{ field.id_for_label }}" style="color:#D9D9D9; margin-bottom: 5px;"><b>{{field.label}}</b></label>
+                <label for="{{ field.id_for_label }}" style="color:#D9D9D9;"
+                    class="margin-bottom"><b>{{field.label}}</b></label>
                 {{ field }}
             </div>
+            {% for error in field.errors %}
+            <div class="alert alert-danger ">
+                {{error}}
+            </div>
+            {% endfor %}
             {% endfor %}
         </div>
         <div class="col-12 text-center">
@@ -19,4 +25,4 @@
     </form>
 </section>
 {%endblock%}
-{% include 'gallery/partials/_footer.html' %}
+{% include 'partials/_footer.html' %}
