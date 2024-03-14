@@ -15,7 +15,7 @@ class Cards(models.Model):
     categoria = models.CharField(max_length=100,choices=LISTA_DE_CATEGORIAS, default='')
     descricao = models.TextField(null= False, blank=False)
     foto = models.ImageField(upload_to='fotos/%Y/%m/%d/', blank=True)
-    publicado = models.BooleanField(default=False)
+    publicado = models.BooleanField(default=True)
     data_card = models.DateTimeField(default=datetime.now) 
     usuario = models.ForeignKey(
         to=User,

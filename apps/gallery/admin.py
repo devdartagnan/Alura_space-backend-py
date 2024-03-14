@@ -1,5 +1,5 @@
 from django.contrib import admin 
-from gallery.models import Cards
+from apps.gallery.models import Cards
 
 class ListandoCards(admin.ModelAdmin):
     list_display = ('id', 'nome', 'legenda', 'publicado', 'data_card', 'usuario') 

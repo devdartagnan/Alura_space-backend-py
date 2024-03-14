@@ -1,4 +1,4 @@
-{% extends 'gallery/base.html' %}
+{% extends 'shared/base.html' %}
 {% load static %}
 {% block content%}
 
@@ -18,6 +18,10 @@
                     <p class="imagem__descricao">{{cards.legenda}}</p>
                     <p class="imagem__texto">{{cards.descricao}}</p>
                 </div>
+            </div>
+            <div>
+                <a href="{% url 'editar_imagem' cards.id %}"><button class="btn btn-success col-12" style="padding: top 5px;">Editar</button></a>
+                <a href="{% url 'deletar_imagem' cards.id %}"><button class="btn btn-danger col-12" style="padding: top 5px;">Deletar</button></a>
             </div>
         </div>
     </section>
